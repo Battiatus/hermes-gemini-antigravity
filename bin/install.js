@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Installs the Gemini Antigravity provider into Hermes Agent: copies the plugin into <Hermes home>/plugins/.
 // Usage: npx hermes-gemini-antigravity [install|uninstall] [--home <Hermes home>]
-import { cpSync, existsSync, mkdirSync, rmSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, realpathSync, rmSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,7 +34,8 @@ export function uninstall(home) {
   return found ? target : null;
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+// npx and global installs run this file through a symlink in node_modules/.bin
+if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) {
   const args = process.argv.slice(2);
   const at = args.indexOf('--home');
   if (at >= 0) args.splice(at, 2);

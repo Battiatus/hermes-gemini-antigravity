@@ -1,5 +1,5 @@
 name: gemini-antigravity
 kind: model-provider
-version: 0.1.0
+version: 0.1.1
 description: "Google Antigravity subscription (Gemini, Claude, GPT-OSS) with a direct OAuth 2.0 sign-in to Google: no agy CLI, no third-party package"
 author: Battiatus

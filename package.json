@@ -1,6 +1,6 @@
 {
   "name": "hermes-gemini-antigravity",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hermes Agent model provider for a Google Antigravity subscription (Gemini, Claude, GPT-OSS), signed in directly with Google OAuth 2.0. No agy CLI, no dependencies.",
   "license": "MIT",
   "type": "module",
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/Battiatus/hermes-gemini-antigravity#readme",
   "keywords": ["hermes-agent", "hermes", "antigravity", "gemini", "oauth", "model-provider"],
   "bin": { "hermes-gemini-antigravity": "bin/install.js" },
-  "files": ["bin/", "__init__.py", "antigravity.py", "client.py", "plugin.yaml", "README.md", "README.fr.md", "LICENSE"],
+  "files": ["bin/install.js", "__init__.py", "antigravity.py", "client.py", "plugin.yaml", "README.md", "README.fr.md", "LICENSE"],
   "engines": { "node": ">=18" },
   "scripts": { "test": "python3 -m unittest discover -s tests && node --test bin/install.test.js" }
 }
