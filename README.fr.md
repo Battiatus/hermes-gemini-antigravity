@@ -15,8 +15,10 @@ npx hermes-gemini-antigravity
 La commande copie le plugin dans `~/.hermes/plugins/gemini-antigravity` (Windows : `%LOCALAPPDATA%\hermes\plugins\gemini-antigravity`). Pour viser un autre dossier Hermes ou un autre profil, utilisez `--home <dossier>` ou `HERMES_HOME`. Installation possible aussi depuis Git :
 
 ```bash
-hermes plugins install Battiatus/hermes-gemini-antigravity
+hermes plugins install Battiatus/hermes-gemini-antigravity --force
 ```
+
+`--force` est nécessaire parce que l'analyseur de plugins de Hermes signale une ligne, `antigravity.py:29` : le secret client OAuth de l'application Antigravity (`GOCSPX-…`). C'est un secret d'application installée Google, public par conception et présent dans chaque copie d'Antigravity : Hermes le classe « caution », pas « dangerous ». À ce niveau, il bloque quand même les plugins communautaires sans confirmation. L'installation par `npx` ci-dessus copie directement les fichiers et ne demande rien.
 
 ## Se connecter
 
