@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/Battiatus/hermes-gemini-antigravity/main/assets/banner.svg" alt="Gemini Antigravity for Hermes Agent" width="100%"></p>
+
 # Gemini Antigravity for Hermes Agent
 
 Run [Hermes Agent](https://github.com/NousResearch/hermes-agent) on your **Google Antigravity subscription** (Gemini 3.8 Flash, Claude, GPT-OSS…, whatever Google offers your account).
