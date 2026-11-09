@@ -15,5 +15,5 @@ jobs:
         with:
           node-version: 24
       - run: python -m unittest discover -s tests -v
-      - run: node --test bin/
+      - run: node --test bin/install.test.js
       - run: node bin/install.js --home hermes-home && python -c "import pathlib; assert pathlib.Path('hermes-home/plugins/gemini-antigravity/plugin.yaml').exists()"
