@@ -64,10 +64,12 @@ class Protocol(unittest.TestCase):
             conn = http.client.HTTPConnection("127.0.0.1", ag.CALLBACK_PORT, timeout=5)
             conn.request("GET", "/oauth-callback?state=wrong&code=x")
             self.page = conn.getresponse().read().decode()
-        threading.Thread(target=browser, daemon=True).start()
+        reader = threading.Thread(target=browser, daemon=True)
+        reader.start()
         with self.assertRaises(ag.AntigravityError) as caught:
             ag.login(open_browser=False, timeout=10, prompt=lambda _: time.sleep(30) or "")
         self.assertIn("state mismatch", str(caught.exception))
+        reader.join(5)  # login returns once the page is sent; the reader may not have read it yet
         self.assertIn("state mismatch", self.page)
 
     def test_sessions_keep_one_id_per_conversation(self):
