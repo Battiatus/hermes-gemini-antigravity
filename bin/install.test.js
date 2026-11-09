@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { test } from 'node:test';
 import { hermesHome, install, uninstall } from './install.js';
 
 test('Hermes home follows --home, HERMES_HOME, then the platform default', () => {
-  assert.equal(hermesHome({ argv: ['--home', '/x/h'], env: {}, platform: 'linux', home: '/u' }), join('/x/h'));
-  assert.equal(hermesHome({ argv: [], env: { HERMES_HOME: '/e/h' }, platform: 'linux', home: '/u' }), join('/e/h'));
+  assert.equal(hermesHome({ argv: ['--home', '/x/h'], env: {}, platform: 'linux', home: '/u' }), resolve('/x/h'));
+  assert.equal(hermesHome({ argv: [], env: { HERMES_HOME: '/e/h' }, platform: 'linux', home: '/u' }), resolve('/e/h'));
   assert.equal(hermesHome({ argv: [], env: {}, platform: 'darwin', home: '/u' }), join('/u', '.hermes'));
   assert.equal(hermesHome({ argv: [], env: { LOCALAPPDATA: 'C:\\L' }, platform: 'win32', home: 'C:\\u' }), join('C:\\L', 'hermes'));
 });
